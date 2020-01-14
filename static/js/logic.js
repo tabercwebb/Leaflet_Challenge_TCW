@@ -133,44 +133,22 @@ d3.json(earthquakeURL, function(earthquakeData) {
     // Set Up Legend
     var legend = L.control({ position: "bottomright" });
 
-    // legend.onAdd = function () {
-    //     var div = L.DomUtil.create("div", "info legend");
-    //     var magnitudeRanges = [0, 1, 2, 3, 4, 5];
-
-    //     div.innerHTML += "<h3>Magnitude</h3>";
-
-    //     for (var i = 0; i < magnitudeRanges.length; i++) {
-
-    //         div.innerHTML +=
-    //     }
-        
-
-    //     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-    //     return div;
-    // };
-
-    legend.onAdd = function() {
+    legend.onAdd = function () {
         var div = L.DomUtil.create("div", "info legend");
-        var limits = [0, 1, 2, 3, 4, 5];
-        var colors = chooseColor(feature.properties.mag);
+        var magnitudeRanges = [0, 1, 2, 3, 4, 5];
         var labels = [];
-    
-        // Add min & max
-        var legendInfo = "<h2>Magnitude</h2>" +
-          "<div class=\"labels\">" +
-            "<div class=\"min\">" + limits[0] + "</div>" +
-            "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-          "</div>";
-    
-        div.innerHTML = legendInfo;
-    
-        limits.forEach(function(limit, index) {
-          labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-        });
-    
-        div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+
+        div.innerHTML += "<h2>Magnitude</h2>";
+
+        // Loop Through Magnitude Intervals & Generate a Label with a Colored Square for Each Interval
+        for (var i = 0; i < magnitudeRanges.length; i++) {
+
+            div.innerHTML +=
+                '<i style="background:' + chooseColor(magnitudeRanges[i] + 1) + '"></i> ' +
+                magnitudeRanges[i] + (magnitudeRanges[i + 1] ? '&ndash;' + magnitudeRanges[i + 1] + '<br>' : '+');
+        }
         return div;
-      };
+    };
 
     // Add Legend to Map
     legend.addTo(myMap);
