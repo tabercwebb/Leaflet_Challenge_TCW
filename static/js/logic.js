@@ -44,7 +44,7 @@ var overlayMaps = {
 // Create Map & Pass in SatelliteMap & Earthquakes Layer as Default Layers
 var myMap = L.map("map", {
     center: [39.82, 98.57],
-    zoom: 2,
+    zoom: 3,
     layers: [satelliteMap, earthquakes, tectonicPlates]
 });
 
