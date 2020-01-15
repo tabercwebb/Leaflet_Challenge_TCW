@@ -44,7 +44,7 @@ var overlayMaps = {
 // Create Map & Pass in SatelliteMap & Earthquakes Layer as Default Layers
 var myMap = L.map("map", {
     center: [39.82, -98.57],
-    zoom: 4,
+    zoom: 3,
     layers: [satelliteMap, earthquakes, tectonicPlates]
 });
 
@@ -61,7 +61,7 @@ d3.json(earthquakeURL, function(earthquakeData) {
         if (magnitude === 0) {
             return 1;
         }
-        return magnitude * 3
+        return magnitude * 4
     }
 
     // Function to Set Color of Marker Based on Magnitude
@@ -71,7 +71,7 @@ d3.json(earthquakeURL, function(earthquakeData) {
         case magnitude > 5:
             return "#FF0000";
         case magnitude > 4:
-            return "#FF6347";
+            return "#FF4500";
         case magnitude > 3:
             return "#FFA500";
         case magnitude > 2:
