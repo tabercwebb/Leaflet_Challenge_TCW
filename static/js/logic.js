@@ -45,7 +45,7 @@ var overlayMaps = {
 var myMap = L.map("map", {
     center: [39.82, -98.57],
     zoom: 3,
-    layers: [satelliteMap, earthquakes, tectonicPlates]
+    layers: [satelliteMap, tectonicPlates, earthquakes]
 });
 
 // Create a Layer Control & Pass in the BaseMaps & OverlayMaps & Add Layer Control to Map
