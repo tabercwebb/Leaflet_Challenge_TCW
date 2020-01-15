@@ -113,9 +113,6 @@ d3.json(earthquakeURL, function(earthquakeData) {
         }
     }).addTo(earthquakes);
 
-    // Add Earthquakes Layer to Map
-    earthquakes.addTo(myMap);
-
     // Grab Tectonic Plate Data with D3
     d3.json(tectonicPlatesURL, function(tectonicPlateData) {
 
@@ -130,6 +127,9 @@ d3.json(earthquakeURL, function(earthquakeData) {
         tectonicPlates.addTo(myMap);
     });
 
+    // Add Earthquakes Layer to Map
+    earthquakes.addTo(myMap);
+    
     // Set Up Legend
     var legend = L.control({ position: "bottomright" });
 
